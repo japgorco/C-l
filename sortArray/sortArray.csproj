@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1B17EABB-7679-4886-91CC-FA37B11BD3BC}</ProjectGuid>
+    <ProjectGuid>{52775088-F45F-4642-86A4-1EFB6B2BB18F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Types</RootNamespace>
-    <AssemblyName>Types</AssemblyName>
+    <RootNamespace>sortArray</RootNamespace>
+    <AssemblyName>sortArray</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
