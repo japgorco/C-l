@@ -1,4 +1,5 @@
 ﻿using System;
+using sortArray;
 
 namespace sortArray
 {
@@ -10,15 +11,27 @@ namespace sortArray
             //array members are random from -100 to 100
             Random r = new Random();
 
-            var a = FormArray(r);
+         //   var a = FormArray(r);
 
-            PrintArray(a);
+            var car = new Car();
 
-            SortArray(a);
+            car.move(5);
 
-            PrintArray(a);
+            Console.WriteLine("Speed is " +car.checkSpeed().ToString());
 
-           // System.Threading.Thread.Sleep(500000);
+            car.Stop();
+
+
+
+            Console.ReadKey();
+
+            // PrintArray(a);
+
+            //  SortArray(a);
+
+            // PrintArray(a);
+
+            // System.Threading.Thread.Sleep(500000);
         }
 
         private static int[] FormArray(Random r)
@@ -26,7 +39,7 @@ namespace sortArray
             int[] a = new int[50];
 
             //int[] a = new int[8] { 6,5,3,1,8,7,2,4};
-
+            // 
             for (int i = 0; i < a.Length; i++)
             {
                 a[i] = r.Next(-100, 100);
@@ -36,7 +49,7 @@ namespace sortArray
 
         }
 
-        private static void PrintArray(int[] a)
+        private void PrintArray(int[] a)
         {
             for (int i = 0; i < a.Length; i++)
             {
@@ -66,8 +79,6 @@ namespace sortArray
                 }
                 //в освободившееся место вставляем текущее значение
                 a[i+1] = value;
-
-
             }
 
             return a;
