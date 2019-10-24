@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52775088-F45F-4642-86A4-1EFB6B2BB18F}</ProjectGuid>
+    <ProjectGuid>{ADC3E308-46B8-4AFC-A7AE-55454042C6A9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>sortArray</RootNamespace>
-    <AssemblyName>sortArray</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Car</RootNamespace>
+    <AssemblyName>Car</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="insertSort.cs" />
+    <Compile Include="car.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,37 +1,22 @@
 ﻿using System;
-using sortArray;
 
 namespace sortArray
 {
-    class InsertSort
+    internal static class InsertSort
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //form one-dimension array with length 50
             //array members are random from -100 to 100
             Random r = new Random();
 
-         //   var a = FormArray(r);
+            int[] a = FormArray(r);
 
-            var car = new Car();
+            PrintArray(a);
 
-            car.move(5);
+            SortArray(a);
 
-            Console.WriteLine("Speed is " +car.checkSpeed().ToString());
-
-            car.Stop();
-
-
-
-            Console.ReadKey();
-
-            // PrintArray(a);
-
-            //  SortArray(a);
-
-            // PrintArray(a);
-
-            // System.Threading.Thread.Sleep(500000);
+            PrintArray(a);
         }
 
         private static int[] FormArray(Random r)
@@ -39,7 +24,7 @@ namespace sortArray
             int[] a = new int[50];
 
             //int[] a = new int[8] { 6,5,3,1,8,7,2,4};
-            // 
+
             for (int i = 0; i < a.Length; i++)
             {
                 a[i] = r.Next(-100, 100);
@@ -49,7 +34,7 @@ namespace sortArray
 
         }
 
-        private void PrintArray(int[] a)
+        private static void PrintArray(int[] a)
         {
             for (int i = 0; i < a.Length; i++)
             {
@@ -60,14 +45,14 @@ namespace sortArray
 
         private static int[] SortArray(int[] a)
         {
-            for(int left = 0; left < a.Length; left++)
+            for (int left = 0; left < a.Length; left++)
             {
                 //берем значение текущего элемента
                 int value = a[left];
                 //перемещаемся по элементам кот. находятся перед текущим элементом
                 int i = left - 1;
 
-                for (; i >=0; i--)
+                for (; i >= 0; i--)
                 {
                     //если вытащили меньшее значение - передвигаем больший элемент дальше на одну позицию
                     if (value < a[i])
@@ -75,10 +60,13 @@ namespace sortArray
                         a[i + 1] = a[i];
                     }
                     //иначе если вытащенный элемент больше - выходим из внутреннего цикла
-                    else break;
+                    else
+                    {
+                        break;
+                    }
                 }
                 //в освободившееся место вставляем текущее значение
-                a[i+1] = value;
+                a[i + 1] = value;
             }
 
             return a;

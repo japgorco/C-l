@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Types", "Types\Types.csproj", "{1B17EABB-7679-4886-91CC-FA37B11BD3BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sortArray", "sortArray\sortArray.csproj", "{52775088-F45F-4642-86A4-1EFB6B2BB18F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car", "Car\Car.csproj", "{ADC3E308-46B8-4AFC-A7AE-55454042C6A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{52775088-F45F-4642-86A4-1EFB6B2BB18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52775088-F45F-4642-86A4-1EFB6B2BB18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52775088-F45F-4642-86A4-1EFB6B2BB18F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC3E308-46B8-4AFC-A7AE-55454042C6A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC3E308-46B8-4AFC-A7AE-55454042C6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC3E308-46B8-4AFC-A7AE-55454042C6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC3E308-46B8-4AFC-A7AE-55454042C6A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
