@@ -4,9 +4,30 @@ namespace Car
 {
     internal class Car
     {
-        public int Weight;
+        public int weight;
 
-        protected double Vin;
+        private string vin;
+
+        public string VIN
+        {
+            get
+            {
+                return vin;
+            }
+
+            set
+            {
+                if (value.Length != 17)
+                {
+                    Console.WriteLine("VIN code length should consists of 17 symbols");
+                }
+                else
+                {
+                    vin = value;
+                }
+            }
+        }
+
 
         private int _speed;
 
@@ -24,18 +45,35 @@ namespace Car
 
         //add constructor with one parameter (weight)
 
-        public Car(int weight)
+        public Car(int w)
         {
-            weight = 2500;
+            weight = w;
+        }
+
+        internal string CarModel()
+        {
+            return _carModel;
         }
 
         //add constructor with two parameters (weight & car model)
 
-        public Car(int weight, string carModel)
+        public Car(int w, string carModel)
         {
-            weight = 2500;
-            carModel = _carModel;
+            weight = w;
+            //carModel = _carModel;
+            _carModel = carModel;
         }
+
+        //add constructor with three parameters (weight,  car model, VIN code)
+
+        public Car(int w, string carModel, string v)
+        {
+            weight = w;
+            //carModel = _carModel;
+            _carModel = carModel;
+            VIN = v;
+        }
+
 
 
         //add method Move
@@ -48,7 +86,7 @@ namespace Car
         public void CarModel(string carModel)
         {
             _carModel = carModel;
-            Console.WriteLine("I'm driving with speed {0}", speed);
+            Console.WriteLine("I'm driving with speed {0}", _speed);
         }
 
         //add method Stop
@@ -68,7 +106,7 @@ namespace Car
 
         public double KineticEnergyOfaCar(int speed, int weight)
         {
-            var kineticEnergy = (weight * Math.Pow(speed, 2)) / 2;
+            double kineticEnergy = (weight * Math.Pow(speed, 2)) / 2;
 
             return kineticEnergy;
         }
