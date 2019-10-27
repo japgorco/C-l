@@ -12,7 +12,7 @@ namespace Car
         {
             get
             {
-                return vin;
+                return _vin;
             }
 
             set
@@ -31,16 +31,23 @@ namespace Car
 
         private int _speed;
 
+        //internal string CarModel()
+        //{
+        //    return _carModel;
+        //}
+
         //add car model
         private string _carModel;
+        // string carModel;
 
         //add car type
         private readonly string _carType;
 
+        #region Constructors
         //add constructor w/out parameters
         public Car()
         {
-
+            
         }
 
         //add constructor with one parameter (weight)
@@ -50,30 +57,26 @@ namespace Car
             weight = w;
         }
 
-        internal string CarModel()
-        {
-            return _carModel;
-        }
-
         //add constructor with two parameters (weight & car model)
 
-        public Car(int w, string carModel)
+        public Car(int w, string cm)
         {
             weight = w;
             //carModel = _carModel;
-            _carModel = carModel;
+            //_carModel = carModel;
+            _carModel = cm;
         }
 
         //add constructor with three parameters (weight,  car model, VIN code)
 
-        public Car(int w, string carModel, string v)
+        public Car(int w, string m, string v)
         {
             weight = w;
             //carModel = _carModel;
-            _carModel = carModel;
+            _carModel = m;
             VIN = v;
         }
-
+        #endregion
 
 
         //add method Move
@@ -83,9 +86,9 @@ namespace Car
             Console.WriteLine("I'm driving with speed {0}", speed);
         }
 
-        public void CarModel(string carModel)
+        public void CarModel(string cm)
         {
-            _carModel = carModel;
+            _carModel = cm;
             Console.WriteLine("I'm driving with speed {0}", _speed);
         }
 

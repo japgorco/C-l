@@ -18,6 +18,12 @@ namespace Car
 
         private static void Main(string[] args)
         {
+            int count = 10;
+
+            string strCount = count.ToString();
+            strCount = 676.ToString();
+            
+            count = Convert.ToInt32("767");
 
             Car car = new Car();
 
@@ -35,7 +41,7 @@ namespace Car
 
             for (int i = 0; i < 15; i++)
             {
-                cars.Add(new Car() { weight = 2000, VIN = RandomString(17)  });
+                cars.Add(new Car() { carModel = "Lada", weight = 2000, VIN = RandomString(17)  });
             }
 
             Console.WriteLine("Speed is " + car.CheckSpeed());
@@ -46,11 +52,11 @@ namespace Car
 
             car1.KineticEnergyOfaCar(10, 2500);
 
-            Console.WriteLine("Kinetic Energy of a car model {0} is {1} J.", car2.CarModel().ToString(), car2.KineticEnergyOfaCar(5, car2.weight));
+            Console.WriteLine("Kinetic Energy of a car model {0} is {1} J.", car2.carModel, car2.KineticEnergyOfaCar(5, car2.weight));
 
             foreach (var c in cars)
             {
-                Console.WriteLine("Car {0} weight is {1} and VIN is {2}", c.CarModel(), c.weight, c.VIN);
+                Console.WriteLine("Car {0} weight is {1} and VIN is {2}", c.carModel, c.weight, c.VIN);
             }
 
             Console.ReadKey();
