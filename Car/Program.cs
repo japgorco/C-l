@@ -19,7 +19,7 @@ namespace Car
             for (int i = 0; i < 17; i++)
             {
                 int pos = random.Next(0, chars.Length);
-                intermediate = String.Concat(chars[pos]);
+                intermediate = chars[pos].ToString();
                 vin = vin + intermediate;
             }
 
