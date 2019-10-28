@@ -1,12 +1,33 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace Car
 {
     internal class Car
     {
-        public int weight;
+        private int _weight;
 
-        private string vin;
+        public int Weight
+        {
+            get
+            {
+                return _weight;
+            }
+
+            set
+            {
+                if (value <= 0)
+                {
+                    Console.WriteLine("Car weight can not be smaller than 0 ");
+                }
+                else
+                {
+                    _weight = value;
+                }
+            }
+        }
+
+        private string _vin;
 
         public string VIN
         {
@@ -23,7 +44,7 @@ namespace Car
                 }
                 else
                 {
-                    vin = value;
+                    _vin = value;
                 }
             }
         }
@@ -31,17 +52,26 @@ namespace Car
 
         private int _speed;
 
-        //internal string CarModel()
-        //{
-        //    return _carModel;
-        //}
 
         //add car model
         private string _carModel;
-        // string carModel;
+
+        public string CarModel
+        {
+            get
+            {
+                return _carModel;
+
+            }
+            set
+            {
+                _carModel = value; 
+
+            }
+        }
 
         //add car type
-        private readonly string _carType;
+        private string _carType;
 
         #region Constructors
         //add constructor w/out parameters
@@ -50,29 +80,26 @@ namespace Car
             
         }
 
-        //add constructor with one parameter (weight)
+        //add constructor with one parameter (_weight)
 
         public Car(int w)
         {
-            weight = w;
+            _weight = w;
         }
 
-        //add constructor with two parameters (weight & car model)
+        //add constructor with two parameters (_weight & car model)
 
-        public Car(int w, string cm)
+        public Car(int w, string m)
         {
-            weight = w;
-            //carModel = _carModel;
-            //_carModel = carModel;
-            _carModel = cm;
+            _weight = w;
+            _carModel = m;
         }
 
-        //add constructor with three parameters (weight,  car model, VIN code)
+        //add constructor with three parameters (_weight,  car model, VIN code)
 
         public Car(int w, string m, string v)
         {
-            weight = w;
-            //carModel = _carModel;
+            _weight = w;
             _carModel = m;
             VIN = v;
         }
@@ -86,11 +113,6 @@ namespace Car
             Console.WriteLine("I'm driving with speed {0}", speed);
         }
 
-        public void CarModel(string cm)
-        {
-            _carModel = cm;
-            Console.WriteLine("I'm driving with speed {0}", _speed);
-        }
 
         //add method Stop
         public void Stop()

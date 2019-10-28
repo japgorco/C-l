@@ -12,8 +12,21 @@ namespace Car
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
+
+            string intermediate = "";
+            string vin = "";
+
+            for (int i = 0; i < 17; i++)
+            {
+                int pos = random.Next(0, chars.Length);
+                intermediate = String.Concat(chars[pos]);
+                vin = vin + intermediate;
+            }
+
+            return vin;
+
+            //return new string(Enumerable.Repeat(chars, length)
+            //    .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         private static void Main(string[] args)
@@ -41,7 +54,7 @@ namespace Car
 
             for (int i = 0; i < 15; i++)
             {
-                cars.Add(new Car() { carModel = "Lada", weight = 2000, VIN = RandomString(17)  });
+                cars.Add(new Car() { CarModel = "Lada", Weight = 2000, VIN = RandomString(17)  });
             }
 
             Console.WriteLine("Speed is " + car.CheckSpeed());
@@ -52,12 +65,13 @@ namespace Car
 
             car1.KineticEnergyOfaCar(10, 2500);
 
-            Console.WriteLine("Kinetic Energy of a car model {0} is {1} J.", car2.carModel, car2.KineticEnergyOfaCar(5, car2.weight));
+            Console.WriteLine("Kinetic Energy of a car model {0} is {1} J.", car2.CarModel, car2.KineticEnergyOfaCar(5, car2.Weight));
 
-            foreach (var c in cars)
+            for (int i = 0; i < cars.Count; i++)
             {
-                Console.WriteLine("Car {0} weight is {1} and VIN is {2}", c.carModel, c.weight, c.VIN);
+                Console.WriteLine("Car {0} weight is {1} and VIN is {2}", cars[i].CarModel, cars[i].Weight, cars[i].VIN);
             }
+ 
 
             Console.ReadKey();
 
