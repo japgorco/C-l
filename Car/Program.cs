@@ -44,11 +44,15 @@ namespace Car
 
             Car car2 = new Car(3000, "Dodge");
 
-            Car car3 = new Car(3000, "Dodge", "1FMYU95HX5KA01996");
+            Car car3 = new Car(3000, "Dodge", RandomString(17), 55);
+
+            Truck truck = new Truck();
+
+            truck.Move(speed:25, carModel:"BELAZ");
 
             car.Move(5);
 
-            car1.Move(10);
+            car1.Move(55, "LADA");
 
             List<Car> cars = new List<Car>(15);
 
@@ -72,6 +76,9 @@ namespace Car
                 Console.WriteLine("Car {0} weight is {1} and VIN is {2}", cars[i].CarModel, cars[i].Weight, cars[i].VIN);
             }
  
+            //check overrided ToString
+            Console.WriteLine(car3.ToString());
+
 
             Console.ReadKey();
 

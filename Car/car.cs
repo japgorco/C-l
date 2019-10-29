@@ -73,6 +73,12 @@ namespace Car
         //add car type
         private string _carType;
 
+        //override ToString method
+        public override string ToString()
+        {
+            return string.Format("Car model is {0}, it's speed is {1} and VIN is {2}", _carModel, _speed, _vin);
+        }
+
         #region Constructors
         //add constructor w/out parameters
         public Car()
@@ -97,11 +103,12 @@ namespace Car
 
         //add constructor with three parameters (_weight,  car model, VIN code)
 
-        public Car(int w, string m, string v)
+        public Car(int w, string m, string v, int speed)
         {
             _weight = w;
             _carModel = m;
             VIN = v;
+            _speed = speed;
         }
         #endregion
 
@@ -113,6 +120,14 @@ namespace Car
             Console.WriteLine("I'm driving with speed {0}", speed);
         }
 
+        //Move method overload
+
+        public void Move(int speed, string carModel)
+        {
+            _speed = speed;
+            _carModel = carModel;
+            Console.WriteLine("Car model {0} is driving with speed {1}", carModel, speed);
+        }
 
         //add method Stop
         public void Stop()
