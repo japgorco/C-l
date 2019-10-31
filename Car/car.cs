@@ -52,6 +52,19 @@ namespace Car
 
         private int _speed;
 
+        public int Speed
+        {
+            get
+            {
+                return _speed;
+            }
+            set
+            {
+                _speed = value;
+
+            }
+        }
+
 
         //add car model
         private string _carModel;
@@ -76,7 +89,7 @@ namespace Car
         //override ToString method
         public override string ToString()
         {
-            return string.Format("Car model is {0}, it's speed is {1} and VIN is {2}", _carModel, _speed, _vin);
+            return String.Format("Car model is {0}, it's speed is {1} and VIN is {2}", _carModel, _speed, _vin);
         }
 
         #region Constructors
@@ -151,5 +164,33 @@ namespace Car
             return kineticEnergy;
         }
 
+        //add method form random string
+        private static readonly Random random = new Random();
+
+        protected internal static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            string intermediate = "";
+            string vin = "";
+
+            for (int i = 0; i < 17; i++)
+            {
+                int pos = random.Next(0, chars.Length);
+                intermediate = chars[pos].ToString();
+                vin = vin + intermediate;
+            }
+
+            return vin;
+
+            //return new string(Enumerable.Repeat(chars, length)
+            //    .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        protected internal static int RandomWeight()
+        {
+            int weight = random.Next(1000, 20000);
+            return weight;
+        }
     }
 }
