@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Dynamic;
 
 namespace Car
 {
-    internal class Car
+    internal class Car : IEquatable<Car>, IComparable<Car>
     {
         private int _weight;
 
         public int Weight
         {
-            get
-            {
-                return _weight;
-            }
+            get => _weight;
 
             set
             {
@@ -31,10 +27,7 @@ namespace Car
 
         public string VIN
         {
-            get
-            {
-                return _vin;
-            }
+            get => _vin;
 
             set
             {
@@ -54,15 +47,8 @@ namespace Car
 
         public int Speed
         {
-            get
-            {
-                return _speed;
-            }
-            set
-            {
-                _speed = value;
-
-            }
+            get => _speed;
+            set => _speed = value;
         }
 
 
@@ -71,44 +57,69 @@ namespace Car
 
         public string CarModel
         {
-            get
-            {
-                return _carModel;
-
-            }
-            set
-            {
-                _carModel = value; 
-
-            }
+            get => _carModel;
+            set => _carModel = value;
         }
 
         //add car type
-        private string _carType;
+        private readonly string _carType;
+
+        public bool Equals (Car other)
+        {
+            if (other == null) return false;
+            return Weight.Equals(other.Weight);
+
+        }
+
+        //override Equals method
+        public override bool Equals (object obj)
+        {
+            if (obj == null) return false;
+            Car objAsCar = obj as Car;
+            if (objAsCar == null) return false;
+            else return Equals(objAsCar);
+        }
 
         //override ToString method
-        public override string ToString()
+        public override string ToString ()
         {
-            return String.Format("Car model is {0}, it's speed is {1} and VIN is {2}", _carModel, _speed, _vin);
+            return string.Format("Car model is {0}, it's speed is {1}, VIN is {2}, Weight is {3}", _carModel, _speed, _vin, _weight);
+        }
+
+        //public int SortByWeightAscending(string carModel1, string carModel2)
+        //{
+        //    return carModel1.CompareTo(carModel2);
+        //}
+
+        //default comparer for Car weight
+        public int CompareTo (Car car)
+        {
+            //A null value means that this object is greater
+            if (car == null)
+                return 1;
+            else
+            {
+                return Weight.CompareTo(car.Weight);
+            }
         }
 
         #region Constructors
         //add constructor w/out parameters
-        public Car()
+        public Car ()
         {
-            
+
         }
 
         //add constructor with one parameter (_weight)
 
-        public Car(int w)
+        public Car (int w)
         {
             _weight = w;
         }
 
         //add constructor with two parameters (_weight & car model)
 
-        public Car(int w, string m)
+        public Car (int w, string m)
         {
             _weight = w;
             _carModel = m;
@@ -116,7 +127,7 @@ namespace Car
 
         //add constructor with three parameters (_weight,  car model, VIN code)
 
-        public Car(int w, string m, string v, int speed)
+        public Car (int w, string m, string v, int speed)
         {
             _weight = w;
             _carModel = m;
@@ -126,8 +137,10 @@ namespace Car
         #endregion
 
 
+        #region Methods
+
         //add method Move
-        public void Move(int speed)
+        public void Move (int speed)
         {
             _speed = speed;
             Console.WriteLine("I'm driving with speed {0}", speed);
@@ -135,7 +148,7 @@ namespace Car
 
         //Move method overload
 
-        public void Move(int speed, string carModel)
+        public void Move (int speed, string carModel)
         {
             _speed = speed;
             _carModel = carModel;
@@ -143,7 +156,7 @@ namespace Car
         }
 
         //add method Stop
-        public void Stop()
+        public void Stop ()
         {
             _speed = 0;
 
@@ -151,13 +164,13 @@ namespace Car
         }
 
         //add method CheckSpeed
-        public int CheckSpeed()
+        public int CheckSpeed ()
         {
 
             return _speed;
         }
 
-        public double KineticEnergyOfaCar(int speed, int weight)
+        public double KineticEnergyOfaCar (int speed, int weight)
         {
             double kineticEnergy = (weight * Math.Pow(speed, 2)) / 2;
 
@@ -167,7 +180,7 @@ namespace Car
         //add method form random string
         private static readonly Random random = new Random();
 
-        protected internal static string RandomString(int length)
+        protected internal static string RandomString (int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -187,10 +200,29 @@ namespace Car
             //    .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        protected internal static int RandomWeight()
+        protected internal static int RandomWeight ()
         {
             int weight = random.Next(1000, 20000);
             return weight;
         }
+
+        public int CountVovelsInVin (string Vin)
+        {
+            const string vovels = "AaEeIiOoYyUu";
+            int SumOfVovels = 0;
+
+            for (int i = 0; i < Vin.Length; i++)
+            {
+                for (int j = 0; j < vovels.Length; j++)
+                {
+                    if (Vin[i] == vovels[j])
+                    {
+                        ++SumOfVovels;
+                    }
+                }
+            }
+            return SumOfVovels;
+        }
+        #endregion
     }
 }

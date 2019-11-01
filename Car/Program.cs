@@ -33,7 +33,7 @@ namespace Car
 
             List<Car> cars = new List<Car>(15);
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 3; i++)
             {
                 cars.Add(new Car() { CarModel = "Lada", Weight = Car.RandomWeight(), VIN = Car.RandomString(17)  });
             }
@@ -48,13 +48,24 @@ namespace Car
 
             Console.WriteLine("Kinetic Energy of a car model {0} is {1} J.", car2.CarModel, car2.KineticEnergyOfaCar(5, car2.Weight));
 
+            for (int i = 0; i < cars.Count; i++)
+            {
+                Console.WriteLine("Before sort Car {0} weight is {1} and VIN is {2}", cars[i].CarModel, cars[i].Weight, cars[i].VIN);
+            }
+
+            //Call Sort on the list. This will use the default comparer, which is the Compare method implemented on Car
             cars.Sort();
 
             for (int i = 0; i < cars.Count; i++)
             {
-                Console.WriteLine("Car {0} weight is {1} and VIN is {2}", cars[i].CarModel, cars[i].Weight, cars[i].VIN);
+                Console.WriteLine("After sort Car {0} weight is {1} and VIN is {2}", cars[i].CarModel, cars[i].Weight, cars[i].VIN);
             }
- 
+
+            //Count sum of vovels at cars' VIN
+            for (int i = 0; i < cars.Count; i++)
+            {
+                Console.WriteLine("Sum of vovels at car's {0} VIN is {1}", cars[i].VIN, cars[i].CountVovelsInVin(cars[i].VIN));
+            }
             //check overrided ToString
 
             Car truck1 = new Truck(3000, "BELAZ", Car.RandomString(17), 55);
