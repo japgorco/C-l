@@ -112,6 +112,9 @@ namespace Car
             //    garage.Add
             //}
 
+            var car4 = garage[0];
+            Console.WriteLine(car4?.Capacity);
+
             Stack carsInGarage = new Stack();
 
             carsInGarage.Push(cars);

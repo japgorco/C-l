@@ -66,9 +66,9 @@ namespace Car
 
         //add some indexator
 
-        Car[] data;
+        Garage[] data;
 
-        public Car this[int index]
+        public Garage this[int index]
         {
             get
             {
