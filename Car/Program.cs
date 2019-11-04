@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -38,13 +39,6 @@ namespace Car
                 cars.Add(new Car() { CarModel = "Lada", Weight = Car.RandomWeight(), VIN = Car.RandomString(17)  });
             }
 
-            Console.WriteLine("Speed is " + car.CheckSpeed());
-
-            car.Stop();
-
-            car.KineticEnergyOfaCar(5, 2500);
-
-            car1.KineticEnergyOfaCar(10, 2500);
 
             Console.WriteLine("Kinetic Energy of a car model {0} is {1} J.", car2.CarModel, car2.KineticEnergyOfaCar(5, car2.Weight));
 
@@ -110,11 +104,21 @@ namespace Car
                 Console.WriteLine("Truck is a Car");
 
             }
+            
+            Garage garage = new Garage(5);
 
+            //for (int i = 0; i < garage. ; i++)
+            //{
+            //    garage.Add
+            //}
 
+            Stack carsInGarage = new Stack();
+
+            carsInGarage.Push(cars);
 
             Console.ReadKey();
 
-        }
+
+         }
     }
 }

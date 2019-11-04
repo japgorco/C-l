@@ -64,6 +64,23 @@ namespace Car
         //add car type
         private readonly string _carType;
 
+        //add some indexator
+
+        Car[] data;
+
+        public Car this[int index]
+        {
+            get
+            {
+                return data[index];
+            }
+            set
+            {
+                data[index] = value;
+            }
+        }
+
+
         public bool Equals (Car other)
         {
             if (other == null) return false;
