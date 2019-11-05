@@ -105,20 +105,21 @@ namespace Car
 
             }
             
-            Garage garage = new Garage(5);
+
+
+            Stack <Car> carsInGarage = new Stack<Car>();
 
             //for (int i = 0; i < garage. ; i++)
             //{
             //    garage.Add
             //}
+            for (int i = 0; i < cars.Count; i++)
+            {
+                Garage.PutCarInGarage(cars[i], carsInGarage);
+            }
 
-            var car4 = garage[0];
-            Console.WriteLine(car4?.Capacity);
-
-            Stack carsInGarage = new Stack();
-
-            carsInGarage.Push(cars);
-
+            Garage garage = new Garage(cars.Count, carsInGarage);
+ 
             Console.ReadKey();
 
 

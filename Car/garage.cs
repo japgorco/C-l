@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Car
 {
-    class Garage
+    internal class Garage
     {
         private int _capacity;
+
+        private object _car;
 
         public int Capacity
         {
@@ -28,31 +28,29 @@ namespace Car
                 }
             }
         }
-        
-        public Garage(int capacity)
+
+        public Garage (int capacity, object car)
         {
             _capacity = capacity;
-        }
-
-        Garage[] data;
-
-        //Add some indexator;
-        public Garage this[int index]
-        {
-            get
-            {
-                return data[index];
-            }
-            set
-            {
-                data[index] = value;
-            }
+            _car = car;
         }
 
         //override ToString method
         public override string ToString ()
         {
-            return string.Format("Garage capacity is {0} cars", _capacity);
+            return string.Format("Garage capacity is {0} cars, now are (is) {1} cars (car) in garage", _capacity, Pu);
+        }
+
+        //Add some methods
+        protected internal static Stack<Car> PutCarInGarage(Car car, Stack<Car> carsInGarage)
+        {
+            carsInGarage.Push(car);
+            return carsInGarage;
+        }
+
+        protected internal static int CountCarsInGarage(Garage garage)
+        {
+            return garage.
         }
     }
 }

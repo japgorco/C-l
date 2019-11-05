@@ -64,24 +64,9 @@ namespace Car
         //add car type
         private readonly string _carType;
 
-        //add some indexator
+        //add some indexation
 
-        Garage[] data;
-
-        public Garage this[int index]
-        {
-            get
-            {
-                return data[index];
-            }
-            set
-            {
-                data[index] = value;
-            }
-        }
-
-
-        public bool Equals (Car other)
+         public bool Equals (Car other)
         {
             if (other == null) return false;
             return Weight.Equals(other.Weight);
@@ -122,10 +107,10 @@ namespace Car
 
         #region Constructors
         //add constructor w/out parameters
-        public Car ()
-        {
+        //public Car ()
+        //{
 
-        }
+        //}
 
         //add constructor with one parameter (_weight)
 
@@ -241,5 +226,24 @@ namespace Car
             return SumOfVovels;
         }
         #endregion
+
+        Car[] data;
+
+        public Car ()
+        {
+            data = new Car[5];
+        }
+
+        public Car this[int index]
+        {
+            get
+            {
+                return data[index];
+            }
+            set
+            {
+                data[index] = value;
+            }
+        }
     }
 }
