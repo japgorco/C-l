@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Car
 {
@@ -64,8 +65,6 @@ namespace Car
         //add car type
         private readonly string _carType;
 
-        //add some indexation
-
          public bool Equals (Car other)
         {
             if (other == null) return false;
@@ -79,19 +78,20 @@ namespace Car
             if (obj == null) return false;
             Car objAsCar = obj as Car;
             if (objAsCar == null) return false;
-            else return Equals(objAsCar);
+            //else return Equals(objAsCar);
+            else return objAsCar.CarModel == _carModel;
         }
 
         //override ToString method
-        public override string ToString ()
+        public virtual string ToString ()
         {
-            return string.Format("Car model is {0}, it's speed is {1}, VIN is {2}, Weight is {3}", _carModel, _speed, _vin, _weight);
+            return string.Format("model is {0}, it's speed is {1}, VIN is {2}, Weight is {3}", _carModel, _speed, _vin, _weight);
         }
 
-        //public int SortByWeightAscending(string carModel1, string carModel2)
-        //{
-        //    return carModel1.CompareTo(carModel2);
-        //}
+        public int SortByWeightAscending(string carModel1, string carModel2)
+        {
+            return carModel1.CompareTo(carModel2);
+        }
 
         //default comparer for Car weight
         public int CompareTo (Car car)
@@ -107,10 +107,10 @@ namespace Car
 
         #region Constructors
         //add constructor w/out parameters
-        //public Car ()
-        //{
+        public Car()
+        {
 
-        //}
+        }
 
         //add constructor with one parameter (_weight)
 
@@ -210,14 +210,14 @@ namespace Car
 
         public int CountVovelsInVin (string Vin)
         {
-            const string vovels = "AaEeIiOoYyUu";
+            const string vovels = "aeioyu";
             int SumOfVovels = 0;
 
             for (int i = 0; i < Vin.Length; i++)
             {
                 for (int j = 0; j < vovels.Length; j++)
                 {
-                    if (Vin[i] == vovels[j])
+                    if (Vin[i] == vovels[j] || Vin[i] == Char.ToUpper(Convert.ToChar(vovels[j])))
                     {
                         ++SumOfVovels;
                     }
@@ -225,25 +225,8 @@ namespace Car
             }
             return SumOfVovels;
         }
+
+
         #endregion
-
-        Car[] data;
-
-        public Car ()
-        {
-            data = new Car[5];
-        }
-
-        public Car this[int index]
-        {
-            get
-            {
-                return data[index];
-            }
-            set
-            {
-                data[index] = value;
-            }
-        }
     }
 }

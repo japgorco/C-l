@@ -1,56 +1,59 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 
 namespace Car
 {
     internal class Garage
-    {
-        private int _capacity;
+        {
+        //private ListDictionary carDictionary = new ListDictionary();
 
-        private object _car;
+        private List<Car> _carList = new List<Car>(1000);
 
-        public int Capacity
+        // This indexator returns appropriate car instance by index
+        public Car this[int pos]
+
         {
             get
             {
-                return _capacity;
+                return _carList[pos];
             }
             set
             {
-                if (value <= 0)
-                {
-                    Console.WriteLine("Garage capacity can not be smaller than 0 ");
-                }
-                else
-                {
-                    _capacity = value;
-                }
+                _carList.Add(value);
             }
         }
-
-        public Garage (int capacity, object car)
-        {
-            _capacity = capacity;
-            _car = car;
+        public int Length
+        { get
+            {
+                return _carList.Count;
+            }
         }
+        public IEnumerator GetEnumerator()
+            {
+            return _carList.GetEnumerator();
+            }
+
 
         //override ToString method
-        public override string ToString ()
+        public override string ToString()
         {
-            return string.Format("Garage capacity is {0} cars, now are (is) {1} cars (car) in garage", _capacity, Pu);
+            return string.Format("There are (is) now {0} cars (car) in the garage, at {1} position stays {2} ", _carList.Count, _carList.IndexOf(_carList[0]), _carList[0].ToString());
         }
 
-        //Add some methods
-        protected internal static Stack<Car> PutCarInGarage(Car car, Stack<Car> carsInGarage)
+        private void PutCarInGarage(Car car)
         {
-            carsInGarage.Push(car);
-            return carsInGarage;
+            _carList.Add(car);
         }
 
-        protected internal static int CountCarsInGarage(Garage garage)
+        public void ShowCarsInGarage()
         {
-            return garage.
+            foreach (Car car in _carList)
+            {
+                Console.WriteLine("At {0} position stays {1} \n", _carList.IndexOf(car), car.ToString());
+            }
         }
     }
 }

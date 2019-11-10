@@ -32,7 +32,7 @@ namespace Car
 
             car1.Move(55, "LADA");
 
-            List<Car> cars = new List<Car>(15);
+            List<Car> cars = new List<Car>();
 
             for (int i = 0; i < 3; i++)
             {
@@ -104,22 +104,25 @@ namespace Car
                 Console.WriteLine("Truck is a Car");
 
             }
-            
 
+            Console.WriteLine("Indexator works\n");
+            Garage garage = new Garage();
 
-            Stack <Car> carsInGarage = new Stack<Car>();
+            // Add named Cars in the Garage
 
-            //for (int i = 0; i < garage. ; i++)
-            //{
-            //    garage.Add
-            //}
-            for (int i = 0; i < cars.Count; i++)
+            for (int i = 0; i < 10; i++)
             {
-                Garage.PutCarInGarage(cars[i], carsInGarage);
+                garage[i] = new Car(3000, "Model " + i, Car.RandomString(17), 55);
             }
 
-            Garage garage = new Garage(cars.Count, carsInGarage);
- 
+            // Access to zippy
+            Car zippy = garage[2];
+            Console.WriteLine("{0} едет со скоростью {1} км/ч", zippy.CarModel, zippy.Speed);
+
+            Console.WriteLine(garage.ToString());
+
+            garage.ShowCarsInGarage();
+
             Console.ReadKey();
 
 
